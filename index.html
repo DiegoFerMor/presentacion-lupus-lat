@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>State of the Art in Systemic Lupus Erythematosus | Hygeia Hub</title>
+    
+    <!-- Fonts: Manrope (Display) & Inter (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons: Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FFFFFF", // Blanco Puro
+                        "primary-dark": "#2C0C4D", // Púrpura Oscuro Profundo
+                        accent: "#00E5FF", // Turquesa Eléctrico / Cyan
+                        "accent-text": "#2C0C4D", // Púrpura Oscuro para texto en botones turquesa
+                        surface: "#2C0C4D", // Púrpura Oscuro como fondo principal
+                        "surface-low": "#3D1766", // Púrpura ligeramente más claro
+                        "surface-lowest": "#1D0733", // Púrpura casi negro
+                        "surface-alt": "#F7F4FA", // Gris claro con matiz morado para lectura larga
+                        "on-surface": "#FFFFFF", // Blanco sobre Púrpura
+                        "on-surface-alt": "#2C0C4D", // Púrpura sobre Gris Claro
+                        outline: "#FFFFFF"
+                    },
+                    fontFamily: {
+                        headline: ["Manrope", "sans-serif"],
+                        body: ["Inter", "sans-serif"]
+                    },
+                    letterSpacing: {
+                        ultra: "-0.02em",
+                        stately: "0.2em"
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            -webkit-font-smoothing: antialiased; 
+            background-color: #2C0C4D; /* Púrpura Oscuro Main */
+            color: #FFFFFF; /* Blanco Puro */
+        }
+        h1, h2, h3, h4, h5 { font-family: 'Manrope', sans-serif; }
+        
+        /* Gradiente Púrpura para el Hero */
+        .hero-gradient { 
+            background: linear-gradient(135deg, #1D0733 0%, #2C0C4D 100%); 
+        }
+        
+        /* Navbar con efecto cristal adaptado al tono Claro/Púrpura */
+        .glass-nav { 
+            background: rgba(247, 244, 250, 0.95); 
+            backdrop-filter: blur(16px); 
+        }
+        
+        /* Reveal animation */
+        .reveal { transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); opacity: 0; transform: translateY(20px); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        
+        /* Custom Accordion transition */
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
+        .accordion-item.active .accordion-content { max-height: 800px; }
+        .accordion-item.active .accordion-icon { transform: rotate(180deg); }
+        
+        .text-balance { text-wrap: balance; }
+        
+        /* Color de selección de texto adaptado al tema */
+        ::selection { background-color: #00E5FF; color: #2C0C4D; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface relative">
+
+    <!-- Header / Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-nav border-b border-primary-dark/10 shadow-sm transition-all">
+        <div class="max-w-7xl mx-auto px-6 h-28 lg:h-32 flex justify-between items-center transition-all">
+            <!-- Brand: Logo Exclusivo del Proyecto -->
+            <div class="flex items-center">
+                <!-- Usamos un placeholder ilustrativo para el logo del proyecto LES -->
+                <img src="./logos/logo_les.png" alt="State of the Art in SLE" class="h-16 md:h-20 lg:h-24 py-2 w-auto drop-shadow-sm transition-all" onerror="this.onerror=null; this.src='https://placehold.co/400x120/F7F4FA/2C0C4D?text=State+of+the+Art+LES'">
+            </div>
+            
+            <!-- Links -->
+            <div class="hidden lg:flex items-center gap-10">
+                <a href="#proposito" class="text-sm font-bold text-primary-dark hover:text-accent transition-colors uppercase tracking-widest text-[11px]">Justificación</a>
+                <a href="#objetivos" class="text-sm font-bold text-primary-dark hover:text-accent transition-colors uppercase tracking-widest text-[11px]">Objetivos</a>
+                <a href="#programa" class="text-sm font-bold text-primary-dark hover:text-accent transition-colors uppercase tracking-widest text-[11px]">Programa</a>
+                <a href="#avales" class="text-sm font-bold text-primary-dark hover:text-accent transition-colors uppercase tracking-widest text-[11px]">Docentes</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- 0. Section: Hero (Cabecera) - FONDO PÚRPURA -->
+        <header class="hero-gradient relative min-h-screen flex items-center pt-32 overflow-hidden">
+            <!-- Elementos decorativos de fondo -->
+            <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-10">
+                <div class="absolute -top-[20%] -right-[10%] w-[50vw] h-[50vw] rounded-full bg-accent blur-[150px]"></div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 relative z-10 w-full">
+                <div class="lg:col-span-8 space-y-10 reveal">
+                    <div class="inline-flex items-center gap-3 bg-surface-lowest/40 backdrop-blur-md px-4 py-2 rounded-full border border-accent/20 mb-4">
+                        <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
+                        <span class="text-[10px] font-black uppercase tracking-widest text-primary">Edición 2026 - 2027</span>
+                    </div>
+                    
+                    <h1 class="flex flex-col gap-2 md:gap-4 text-primary">
+                        <span class="text-xl md:text-2xl lg:text-3xl font-medium text-primary/90 tracking-wide leading-snug max-w-4xl">
+                            State of the Art in Systemic Lupus Erythematosus
+                        </span>
+                        <span class="text-5xl md:text-7xl lg:text-8xl font-black text-primary leading-[1.05] tracking-ultra text-balance mt-2">
+                            La Transición <br>
+                            <span class="text-accent italic font-medium">Subcutánea</span>
+                        </span>
+                    </h1>
+                    
+                    <p class="text-lg md:text-2xl text-on-surface/90 max-w-2xl font-body leading-relaxed text-balance">
+                        Bloqueo del Interferón Tipo I, equivalencia farmacocinética y autonomía domiciliaria. El programa definitivo para redefinir el control del Lupus.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
+                        <div class="flex items-start gap-4 text-primary">
+                            <span class="material-symbols-outlined text-accent">biotech</span>
+                            <span class="text-xs font-semibold leading-snug">Evidencia rigurosa sobre el perfil del Interferón.</span>
+                        </div>
+                        <div class="flex items-start gap-4 text-primary">
+                            <span class="material-symbols-outlined text-accent">verified</span>
+                            <span class="text-xs font-semibold leading-snug">Acreditación EACCME con validez en LATAM.</span>
+                        </div>
+                        <div class="flex items-start gap-4 text-primary">
+                            <span class="material-symbols-outlined text-accent">psychology</span>
+                            <span class="text-xs font-semibold leading-snug">Toma de decisiones compartida (SDM) y Burnout.</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Botones CTA -->
+                    <div class="flex flex-wrap gap-6 pt-6">
+                        <a href="./memoria_academica.pdf" target="_blank" class="bg-accent text-accent-text px-8 py-4 rounded-md font-bold text-sm uppercase tracking-widest hover:bg-opacity-90 transition-all shadow-[0_0_20px_rgba(0,229,255,0.3)] flex items-center gap-3">
+                            Descargar Memoria
+                            <span class="material-symbols-outlined text-sm">download</span>
+                        </a>
+                        <a href="#programa" class="bg-transparent text-primary border-2 border-primary/50 px-8 py-4 rounded-md font-bold text-sm uppercase tracking-widest hover:border-primary hover:bg-primary/5 transition-all">
+                            Ver Módulos Clínicos
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Asymmetrical Typographic Block -->
+                <div class="hidden lg:flex lg:col-span-4 justify-end items-center relative">
+                    <span class="absolute top-1/4 right-0 text-[10vw] font-black text-primary/5 leading-none select-none whitespace-nowrap z-0">IFN-I</span>
+                    <div class="text-right flex flex-col items-end relative z-10">
+                        <div class="p-8 border-r-4 border-accent bg-surface-lowest/60 backdrop-blur-md max-w-xs reveal" style="transition-delay: 0.3s;">
+                            <p class="text-primary font-headline italic text-xl leading-relaxed opacity-90">
+                                "El verdadero éxito terapéutico ocurre cuando el paciente recupera el control de su tiempo, alejando la enfermedad del Hospital de Día."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Stats Bar - FONDO ALTERNO CLARO (#F7F4FA) -->
+        <section class="bg-surface-alt border-y border-primary-dark/10 py-12 shadow-inner">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                    <div class="flex flex-col items-center text-center space-y-3 reveal">
+                        <span class="material-symbols-outlined text-primary-dark text-4xl">assignment_turned_in</span>
+                        <div class="text-3xl font-extrabold text-primary-dark">Self-Assessment</div>
+                        <div class="text-[10px] uppercase font-black tracking-widest text-on-surface-alt/70">Evaluación Clínica Continua</div>
+                    </div>
+                    <div class="flex flex-col items-center text-center space-y-3 reveal" style="transition-delay: 0.1s;">
+                        <span class="material-symbols-outlined text-primary-dark text-4xl">workspace_premium</span>
+                        <div class="text-3xl font-extrabold text-primary-dark">Créditos EACCME</div>
+                        <div class="text-[10px] uppercase font-black tracking-widest text-on-surface-alt/70">Validez internacional (UEMS/AMA)</div>
+                    </div>
+                    <div class="flex flex-col items-center text-center space-y-3 reveal" style="transition-delay: 0.2s;">
+                        <span class="material-symbols-outlined text-primary-dark text-4xl">view_module</span>
+                        <div class="text-3xl font-extrabold text-primary-dark">3 Módulos</div>
+                        <div class="text-[10px] uppercase font-black tracking-widest text-on-surface-alt/70">Inmunología, Terapias y Humanismo</div>
+                    </div>
+                    <div class="flex flex-col items-center text-center space-y-3 reveal" style="transition-delay: 0.3s;">
+                        <span class="material-symbols-outlined text-primary-dark text-4xl">vaccines</span>
+                        <div class="text-3xl font-extrabold text-primary-dark">Transición SC</div>
+                        <div class="text-[10px] uppercase font-black tracking-widest text-on-surface-alt/70">Protocolos Domiciliarios Seguros</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 1. Section: El Desafío - FONDO PÚRPURA -->
+        <section id="proposito" class="min-h-screen flex flex-col justify-center py-32 bg-surface">
+            <div class="max-w-4xl mx-auto px-6 space-y-12 text-center reveal">
+                <div class="w-16 h-1.5 bg-accent mx-auto mb-8 shadow-[0_0_10px_rgba(0,229,255,0.5)]"></div>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-primary leading-tight tracking-ultra">
+                    Del Hospital de Día <br> a la Autonomía Domiciliaria.
+                </h2>
+                <h3 class="text-xl md:text-2xl text-accent font-bold uppercase tracking-widest italic opacity-90">
+                    Justificación Clínica del Programa
+                </h3>
+                <div class="text-lg md:text-xl text-primary leading-loose font-body font-light text-balance text-left md:text-center mt-12 bg-surface-lowest p-10 rounded-2xl border border-primary/20 shadow-lg italic">
+                    "La consolidación de las terapias biológicas dirigidas al bloqueo del interferón tipo I y su evolución hacia formatos autoinyectables exige una actualización profunda. Aliviar la presión asistencial hospitalaria es ahora posible, pero requiere dominar la equivalencia farmacocinética y la selección de candidatos."
+                </div>
+                <p class="text-lg text-accent font-black uppercase tracking-[0.3em] pt-8">Un hito terapéutico que requiere formación inmediata.</p>
+            </div>
+        </section>
+
+        <!-- 2. Section: Metodología Inmersiva - FONDO ALTERNO CLARO (#F7F4FA) -->
+        <section id="metodologia" class="min-h-screen flex flex-col justify-center py-32 bg-surface-alt border-y border-primary-dark/10">
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+                <div class="space-y-12 reveal">
+                    <div>
+                        <span class="text-primary-dark font-black text-[11px] uppercase tracking-[0.6em] mb-4 block">Eficacia Formativa</span>
+                        <h2 class="text-5xl font-black text-primary-dark tracking-ultra">Metodología UX y Certificación EACCME.</h2>
+                    </div>
+                    <p class="text-lg text-on-surface-alt font-medium leading-relaxed">Un entorno virtual de aprendizaje diseñado para garantizar la asimilación de los nuevos algoritmos terapéuticos y protocolos biológicos, bajo la estricta navegación secuencial requerida por EACCME.</p>
+                    
+                    <ul class="space-y-10">
+                        <li class="flex gap-6 group">
+                            <div class="bg-white p-4 h-fit rounded-lg group-hover:bg-primary-dark group-hover:text-accent transition-all shadow-md border border-primary-dark/10 text-primary-dark">
+                                <span class="material-symbols-outlined">school</span>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-primary-dark mb-2">Evaluación Formativa Continua</h4>
+                                <p class="text-sm text-on-surface-alt leading-relaxed italic">Cuestionarios interactivos (Self-Assessments) al final de cada módulo con feedback razonado referenciado a la evidencia clínica.</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-6 group">
+                            <div class="bg-white p-4 h-fit rounded-lg group-hover:bg-primary-dark group-hover:text-accent transition-all shadow-md border border-primary-dark/10 text-primary-dark">
+                                <span class="material-symbols-outlined">auto_stories</span>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-primary-dark mb-2">Contenidos de Clase Mundial</h4>
+                                <p class="text-sm text-on-surface-alt leading-relaxed italic">Malla curricular basada estrictamente en ensayos clínicos fase III y publicaciones oficiales del American College of Rheumatology (ACR).</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-6 group">
+                            <div class="bg-white p-4 h-fit rounded-lg group-hover:bg-primary-dark group-hover:text-accent transition-all shadow-md border border-primary-dark/10 text-primary-dark">
+                                <span class="material-symbols-outlined">bolt</span>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-primary-dark mb-2">Flexibilidad Asíncrona</h4>
+                                <p class="text-sm text-on-surface-alt leading-relaxed italic">Estudio adaptativo 100% online con soporte de simulación y role-play en video para agendas médicas saturadas.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Respaldo Literario -->
+                <div class="flex flex-col items-center justify-center h-full mt-12 lg:mt-0 reveal" style="transition-delay: 0.2s;">
+                    <div class="flex flex-col items-center text-center w-full max-w-sm">
+                        <img src="./logos/logo_acr.png" alt="American College of Rheumatology" class="h-32 md:h-40 w-auto object-contain mb-6 drop-shadow-md grayscale opacity-80 mix-blend-multiply" onerror="this.src='https://placehold.co/300x120/F7F4FA/2C0C4D?text=Aval+ACR'">
+                        <span class="text-[10px] font-black text-on-surface-alt uppercase tracking-[0.3em]">Respaldo Literario / ACR Journals</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Section: Objetivos - FONDO PÚRPURA -->
+        <section id="objetivos" class="min-h-screen flex flex-col justify-center py-32 bg-surface border-b border-primary/20">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="mb-20 text-center reveal">
+                    <span class="text-accent font-black text-[11px] uppercase tracking-[0.5em] mb-4 block">Competencias a Desarrollar</span>
+                    <h2 class="text-4xl md:text-5xl font-black text-primary tracking-ultra">Objetivos del Programa.</h2>
+                    <p class="text-lg text-on-surface mt-4 max-w-2xl mx-auto italic">Capacitar al especialista a través de tres dimensiones fundamentales para la atención del Lupus Eritematoso Sistémico.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Objetivo 1 -->
+                    <div class="bg-surface-lowest p-10 rounded-2xl border border-primary/20 shadow-lg reveal hover:-translate-y-2 transition-transform duration-300">
+                        <div class="w-14 h-14 bg-surface rounded-full flex items-center justify-center mb-8 border border-accent/30">
+                            <span class="material-symbols-outlined text-accent text-3xl">immunology</span>
+                        </div>
+                        <h4 class="text-2xl font-black text-primary mb-4">Dimensión Fisiopatológica</h4>
+                        <p class="text-on-surface leading-relaxed text-sm font-medium opacity-90">
+                            Comprender la patogenia del LES mediada por la hiperactivación del Interferón Tipo I y su correlación con la actividad clínica y el daño orgánico.
+                        </p>
+                    </div>
+                    
+                    <!-- Objetivo 2 -->
+                    <div class="bg-surface-lowest p-10 rounded-2xl border border-primary/20 shadow-lg reveal hover:-translate-y-2 transition-transform duration-300" style="transition-delay: 0.1s;">
+                        <div class="w-14 h-14 bg-surface rounded-full flex items-center justify-center mb-8 border border-accent/30">
+                            <span class="material-symbols-outlined text-accent text-3xl">medical_information</span>
+                        </div>
+                        <h4 class="text-2xl font-black text-primary mb-4">Manejo Clínico y Transición</h4>
+                        <p class="text-on-surface leading-relaxed text-sm font-medium opacity-90">
+                            Evaluar la equivalencia de eficacia de las formulaciones subcutáneas e implementar protocolos para la transición segura desde el hospital al entorno domiciliario.
+                        </p>
+                    </div>
+                    
+                    <!-- Objetivo 3 -->
+                    <div class="bg-surface-lowest p-10 rounded-2xl border border-primary/20 shadow-lg reveal hover:-translate-y-2 transition-transform duration-300" style="transition-delay: 0.2s;">
+                        <div class="w-14 h-14 bg-surface rounded-full flex items-center justify-center mb-8 border border-accent/30">
+                            <span class="material-symbols-outlined text-accent text-3xl">diversity_1</span>
+                        </div>
+                        <h4 class="text-2xl font-black text-primary mb-4">Humanismo y Toma de Decisiones</h4>
+                        <p class="text-on-surface leading-relaxed text-sm font-medium opacity-90">
+                            Implementar herramientas de SDM para vencer la aversión a la autoinyección, reduciendo el desgaste profesional del clínico y empoderando a la paciente.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Section: Público Objetivo - FONDO ALTERNO CLARO (#F7F4FA) -->
+        <section id="impacto" class="min-h-screen flex flex-col justify-center py-32 bg-surface-alt border-b border-primary-dark/10">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="mb-20 text-center reveal">
+                    <span class="text-primary-dark font-black text-[11px] uppercase tracking-[0.4em] mb-4 block">Ecosistema Clínico Integral</span>
+                    <h2 class="text-4xl md:text-5xl font-black mb-6 tracking-ultra text-primary-dark">Capacitación Especializada.</h2>
+                    <p class="text-on-surface-alt text-lg uppercase font-bold tracking-[0.2em] italic">Dirigido estrictamente a médicos implicados en el manejo crónico de la autoinmunidad.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    <!-- Reumatólogos -->
+                    <div class="p-8 border border-primary-dark/20 rounded-xl bg-white shadow-xl space-y-6 reveal hover:-translate-y-1 transition-transform">
+                        <span class="text-[10px] font-black text-primary-dark tracking-stately">PERFIL 01</span>
+                        <h4 class="text-2xl font-black text-primary-dark">Reumatólogos e Inmunólogos</h4>
+                        <p class="text-sm text-on-surface-alt leading-relaxed italic">Especialistas prescriptores responsables del diagnóstico, control de brotes e indicación biológica temprana (steroid-sparing).</p>
+                    </div>
+                    <!-- Internistas -->
+                    <div class="p-8 border border-primary-dark/20 rounded-xl bg-white shadow-xl space-y-6 reveal hover:-translate-y-1 transition-transform" style="transition-delay: 0.1s;">
+                        <span class="text-[10px] font-black text-primary-dark tracking-stately">PERFIL 02</span>
+                        <h4 class="text-2xl font-black text-primary-dark">Medicina Interna (EAS)</h4>
+                        <p class="text-sm text-on-surface-alt leading-relaxed italic">Facultativos de Unidades de Enfermedades Autoinmunes Sistémicas responsables del manejo integral y multisistémico del paciente.</p>
+                    </div>
+                    <!-- MIR -->
+                    <div class="p-8 border border-primary-dark/20 rounded-xl bg-white shadow-xl space-y-6 reveal hover:-translate-y-1 transition-transform" style="transition-delay: 0.2s;">
+                        <span class="text-[10px] font-black text-primary-dark tracking-stately">PERFIL 03</span>
+                        <h4 class="text-2xl font-black text-primary-dark">Médicos Residentes (MIR)</h4>
+                        <p class="text-sm text-on-surface-alt leading-relaxed italic">Inclusión estratégica de R4 y R5 para consolidar la prescripción subcutánea y el modelo humanista desde las etapas formativas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Section: Itinerario Académico - FONDO PÚRPURA -->
+        <section id="programa" class="min-h-screen flex flex-col justify-center py-32 bg-surface border-b border-primary/20">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="mb-20 text-center reveal">
+                    <span class="text-accent font-black text-[11px] uppercase tracking-[0.5em] mb-4 block font-headline">Contenidos y Estructura</span>
+                    <h2 class="text-4xl md:text-6xl font-black text-primary tracking-ultra">El Currículum Científico.</h2>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+                    <!-- Sidebar Informativo -->
+                    <div class="lg:col-span-4 sticky top-32 reveal">
+                        <p class="text-lg font-bold text-primary mb-6 uppercase tracking-[0.2em] italic">3 Módulos de Excelencia.</p>
+                        <p class="text-on-surface leading-relaxed text-sm italic border-l-2 border-accent pl-6 mb-8 opacity-90">Estructurado bajo los máximos estándares UX para EACCME, abarcando los apartados pedagógicos obligatorios por módulo, con un Webinar Kick-off internacional.</p>
+                        
+                        <div class="bg-surface-lowest p-6 rounded-xl border border-primary/20 shadow-lg space-y-4">
+                            <div class="flex items-center gap-4">
+                                <span class="bg-surface border border-primary/30 p-2 rounded-lg text-accent material-symbols-outlined text-sm">menu_book</span>
+                                <span class="text-[10px] font-black uppercase tracking-widest text-primary">Scientific Core & Readings</span>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <span class="bg-surface border border-primary/30 p-2 rounded-lg text-accent material-symbols-outlined text-sm">quiz</span>
+                                <span class="text-[10px] font-black uppercase tracking-widest text-primary">Self-Assessment Test</span>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <span class="bg-surface border border-primary/30 p-2 rounded-lg text-accent material-symbols-outlined text-sm">smart_display</span>
+                                <span class="text-[10px] font-black uppercase tracking-widest text-primary">Casos y Multimedia interactivos</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Acordeones con Temario -->
+                    <div class="lg:col-span-8 space-y-4 reveal">
+                        
+                        <!-- Módulo 1 -->
+                        <div class="accordion-item bg-surface-lowest rounded-xl overflow-hidden border border-primary/30 transition-all shadow-lg">
+                            <button class="w-full px-8 py-8 flex justify-between items-center text-left focus:outline-none" onclick="toggleAccordion(this)">
+                                <div class="flex items-center gap-6">
+                                    <span class="text-[10px] font-black text-accent tracking-stately">M1</span>
+                                    <h4 class="text-xl font-bold text-primary">La firma del Interferón y el nuevo mapa patogénico del LES</h4>
+                                </div>
+                                <span class="material-symbols-outlined text-accent accordion-icon transition-transform">expand_more</span>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="px-8 pb-8 pt-0 ml-12">
+                                    <p class="text-on-surface leading-relaxed italic border-l-2 border-primary/50 pl-6 h-fit py-1 mb-6 opacity-90">
+                                        Actualizar la inmunopatología centrada en el biomarcador del Interferón tipo I y los criterios taxonómicos ACR 2019.
+                                    </p>
+                                    <div class="bg-surface rounded-xl p-6 border border-primary/20">
+                                        <ul class="space-y-3">
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Executive Brief:</strong> "La vía del Interferón: De la biología molecular a la diana terapéutica".</li>
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Scientific Core:</strong> Citoquinas clave en LES y criterios de clasificación EULAR/ACR.</li>
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Critical Debate:</strong> "Treat-to-Target: El reto de la remisión libre de corticoides".</li>
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Further Readings:</strong> Epidemiología y carga de la enfermedad severa (Datos RELESSER).</li>
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Practice Insights:</strong> Algoritmo para detección precoz de actividad refractaria.</li>
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Clinical Cases:</strong> Paciente joven con manifestaciones refractarias y toxicidad por prednisona.</li>
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Self-Assessment:</strong> Cuestionario sobre criterios ACR y correlación de firma IFN.</li>
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Multimedia:</strong> Videocápsula 3D del mecanismo de señalización del receptor de interferón tipo I.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Módulo 2 -->
+                        <div class="accordion-item bg-surface-lowest rounded-xl overflow-hidden border border-primary/30 transition-all shadow-lg">
+                            <button class="w-full px-8 py-8 flex justify-between items-center text-left focus:outline-none" onclick="toggleAccordion(this)">
+                                <div class="flex items-center gap-6">
+                                    <span class="text-[10px] font-black text-accent tracking-stately">M2</span>
+                                    <h4 class="text-xl font-bold text-primary">Optimización Farmacológica y Transición Subcutánea</h4>
+                                </div>
+                                <span class="material-symbols-outlined text-accent accordion-icon transition-transform">expand_more</span>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="px-8 pb-8 pt-0 ml-12">
+                                    <p class="text-on-surface leading-relaxed italic border-l-2 border-primary/50 pl-6 h-fit py-1 mb-6 opacity-90">
+                                        Capacitación clínica en la evidencia de las terapias biológicas subcutáneas (anti-IFN1/BLyS) y establecimiento de protocolos de transición seguros.
+                                    </p>
+                                    <div class="bg-surface rounded-xl p-6 border border-primary/20">
+                                        <ul class="space-y-3">
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Executive Brief:</strong> "El valor clínico de la vía subcutánea: Farmacocinética y alivio hospitalario".</li>
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Scientific Core:</strong> Evidencia pivotal de las formulaciones SC en terapias dirigidas.</li>
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Critical Debate:</strong> "¿Existen fenotipos que deban permanecer en infusión intravenosa?".</li>
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Further Readings:</strong> Consensos SER sobre uso racional de terapias biológicas.</li>
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Practice Insights:</strong> Protocolo Step-by-Step para transición IV a SC.</li>
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Clinical Cases:</strong> Transición exitosa a la pluma precargada domiciliaria.</li>
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Self-Assessment:</strong> Cuestionario sobre farmacocinética comparada y pautas de administración.</li>
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Multimedia:</strong> Instrucción al paciente en el uso de dispositivos autoinyectables.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Módulo 3 -->
+                        <div class="accordion-item bg-surface-lowest rounded-xl overflow-hidden border border-primary/30 transition-all shadow-lg">
+                            <button class="w-full px-8 py-8 flex justify-between items-center text-left focus:outline-none" onclick="toggleAccordion(this)">
+                                <div class="flex items-center gap-6">
+                                    <span class="text-[10px] font-black text-accent tracking-stately">M3</span>
+                                    <h4 class="text-xl font-bold text-primary">Humanismo, SDM y Bienestar (Sello Hygeia)</h4>
+                                </div>
+                                <span class="material-symbols-outlined text-accent accordion-icon transition-transform">expand_more</span>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="px-8 pb-8 pt-0 ml-12">
+                                    <p class="text-on-surface leading-relaxed italic border-l-2 border-primary/50 pl-6 h-fit py-1 mb-6 opacity-90">
+                                        Integración de la Toma de Decisiones Compartida (SDM), análisis de PROs y prevención activa de la fatiga por compasión en el clínico.
+                                    </p>
+                                    <div class="bg-surface rounded-xl p-6 border border-primary/20">
+                                        <ul class="space-y-3">
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Executive Brief:</strong> "El LES vivido: Recuperando la autonomía de la paciente y el tiempo del médico".</li>
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Scientific Core:</strong> Impacto en fatiga, calidad de vida (PROs) y fundamentos de SDM.</li>
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Critical Debate:</strong> "Venciendo la tripanofobia y la sensación de abandono clínico".</li>
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Further Readings:</strong> La magnitud del Burnout en Reumatología.</li>
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Practice Insights:</strong> Comunicación para educar a la paciente reticente.</li>
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Role Play en Video:</strong> Reumatólogo aplicando SDM para negociar alta de Hospital de Día.</li>
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Self-Assessment:</strong> Cuestionario sobre métricas de fatiga, empatía y signos de Burnout.</li>
+                                            <li class="flex items-start gap-3 text-sm text-primary"><span class="material-symbols-outlined text-accent text-[18px]">play_arrow</span> <strong>Multimedia:</strong> La segunda víctima y el desgaste por empatía en autoinmunidad.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Section: Cuadro Docente y Avales - FONDO ALTERNO CLARO (#F7F4FA) -->
+        <section id="avales" class="min-h-screen flex flex-col justify-center py-32 bg-surface-alt border-t border-primary-dark/10">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="mb-24 text-center reveal">
+                    <span class="text-primary-dark font-black text-[11px] uppercase tracking-[0.8em] mb-4 block">Legitimidad Científica</span>
+                    <h2 class="text-4xl md:text-6xl font-black text-primary-dark tracking-ultra">Dirección Académica.</h2>
+                    <p class="text-lg text-on-surface-alt font-bold uppercase tracking-[0.2em] mt-6 italic">KOLs Nacionales en Reumatología Clínica e Inmunología.</p>
+                </div>
+                
+                <!-- Directors -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+                    <div class="bg-white p-10 rounded-2xl border border-primary-dark/20 shadow-xl reveal hover:border-primary-dark hover:shadow-2xl transition-all group">
+                        <span class="text-[9px] font-black text-primary-dark group-hover:text-accent tracking-widest uppercase mb-4 block transition-colors">Coordinador Módulo 1</span>
+                        <h4 class="text-2xl font-black text-primary-dark mb-3">Dr. Íñigo Rúa-Figueroa</h4>
+                        <p class="text-xs font-semibold text-on-surface-alt opacity-90">Reumatólogo del Hospital Univ. de Gran Canaria Doctor Negrín y Coordinador Principal del Registro RELESSER.</p>
+                    </div>
+                    <div class="bg-white p-10 rounded-2xl border border-primary-dark/20 shadow-xl reveal hover:border-primary-dark hover:shadow-2xl transition-all group" style="transition-delay: 0.1s;">
+                        <span class="text-[9px] font-black text-primary-dark group-hover:text-accent tracking-widest uppercase mb-4 block transition-colors">Director Científico (M2)</span>
+                        <h4 class="text-2xl font-black text-primary-dark mb-3">Dr. José María Álvaro-Gracia</h4>
+                        <p class="text-xs font-semibold text-on-surface-alt opacity-90">Jefe del Servicio de Reumatología del Hospital General Universitario Gregorio Marañón (Madrid) y expresidente de la SER.</p>
+                    </div>
+                    <div class="bg-white p-10 rounded-2xl border border-primary-dark/20 shadow-xl reveal hover:border-primary-dark hover:shadow-2xl transition-all group" style="transition-delay: 0.2s;">
+                        <span class="text-[9px] font-black text-primary-dark group-hover:text-accent tracking-widest uppercase mb-4 block transition-colors">Coordinadora Módulo 3</span>
+                        <h4 class="text-2xl font-black text-primary-dark mb-3">Dra. María Galindo Izquierdo</h4>
+                        <p class="text-xs font-semibold text-on-surface-alt opacity-90">Especialista de la Unidad de Lupus del Hospital Universitario 12 de Octubre (Madrid). Referente en impacto psicosocial.</p>
+                    </div>
+                </div>
+                
+                <!-- Institutional Seals -->
+                <div class="mt-32 flex flex-col justify-center items-center gap-16 reveal">
+                    <!-- Primera fila: Sociedades Médicas -->
+                    <div class="flex flex-col items-center gap-6">
+                        <span class="text-[11px] font-black uppercase tracking-[0.3em] text-on-surface-alt/70">Se solicitará aval científico a:</span>
+                        <div class="flex flex-wrap justify-center items-center gap-20 md:gap-32 lg:gap-40">
+                            <!-- Logo genérico de SER como placeholder -->
+                            <img src="./logos/logo_ser.png" alt="SER" class="h-20 md:h-28 lg:h-32 w-auto drop-shadow-md opacity-90 transition-transform hover:scale-105" onerror="this.src='https://placehold.co/300x150/F7F4FA/2C0C4D?text=Aval+SER'">
+                        </div>
+                    </div>
+                    <!-- Segunda fila: Acreditación -->
+                    <div class="flex flex-col items-center gap-6 mt-10">
+                        <span class="text-[11px] font-black uppercase tracking-[0.3em] text-on-surface-alt/70">PENDIENTE CRÉDITOS:</span>
+                        <img src="./logos/logo_EACCME.png" alt="EACCME UEMS" class="h-28 md:h-36 lg:h-44 w-auto drop-shadow-md opacity-90 transition-transform hover:scale-105" onerror="this.src='https://placehold.co/400x180/F7F4FA/2C0C4D?text=Acreditación+EACCME'">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Section: Cierre Institucional - FONDO PÚRPURA -->
+        <section class="py-40 hero-gradient reveal relative overflow-hidden border-t border-primary/20 min-h-screen flex items-center">
+            <!-- Círculo de fondo sutil para dar profundidad -->
+            <div class="absolute inset-0 bg-accent/5 rounded-full filter blur-[150px] transform scale-150 -z-10 translate-x-1/3 translate-y-1/4"></div>
+
+            <div class="max-w-7xl mx-auto px-6 relative z-10 w-full grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                
+                <!-- Bloque Izquierdo: Copy -->
+                <div class="flex flex-col items-start text-left">
+                    <h2 class="text-4xl md:text-6xl lg:text-7xl font-black text-primary leading-tight tracking-ultra italic mb-6">
+                        Cuidar al Que Cuida. <br class="hidden lg:block"><span class="text-accent">Redefinir la Autonomía.</span>
+                    </h2>
+                    
+                    <h3 class="text-2xl md:text-3xl font-light text-on-surface leading-snug text-balance italic mb-6">
+                        Innovación inmunológica apoyada por la compasión clínica.
+                    </h3>
+                    
+                    <p class="max-w-xl text-lg text-primary/90 leading-relaxed font-medium mb-12">
+                        Nuestra propuesta educativa acompaña al clínico en la transición que devolverá el control de vida a las pacientes con Lupus. Aseguremos juntos la correcta implementación de la vía subcutánea en España.
+                    </p>
+                    
+                    <div class="flex flex-col items-start gap-10">
+                        <div class="flex flex-wrap gap-x-6 gap-y-3 text-[10px] font-black uppercase tracking-stately text-on-surface mt-2">
+                            <div class="flex items-center gap-2 whitespace-nowrap">
+                                <span class="w-1.5 h-1.5 rounded-full bg-accent shrink-0"></span>
+                                Formación Médica Independiente
+                            </div>
+                            <div class="flex items-center gap-2 whitespace-nowrap">
+                                <span class="w-1.5 h-1.5 rounded-full bg-accent shrink-0"></span>
+                                Unrestricted Educational Grant
+                            </div>
+                            <div class="flex items-center gap-2 whitespace-nowrap">
+                                <span class="w-1.5 h-1.5 rounded-full bg-accent shrink-0"></span>
+                                Tercero de Confianza (Hygeia)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloque Derecho: Alianza Visual -->
+                <div class="flex flex-col items-center justify-center h-full w-full mt-16 lg:mt-0 relative">
+                    <img src="./logos/logo_hygeia.png" alt="Hygeia Hub" class="w-full max-w-xs md:max-w-md lg:max-w-xl h-auto drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] hover:scale-105 transition-transform duration-700" onerror="this.src='https://placehold.co/600x200/1D0733/FFFFFF?text=Hygeia+Learning+Hub'">
+                </div>
+                
+            </div>
+        </section>    
+    </main>
+
+    <!-- Footer Compacto -->
+    <footer class="py-12 bg-surface-lowest text-primary border-t border-primary/20">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="space-y-2 text-center md:text-left">
+                <div class="flex items-center justify-center md:justify-start mb-4">
+                    <img src="./logos/logo_hygeia.png" alt="Hygeia Hub" class="h-16 md:h-20 lg:h-24 w-auto opacity-90 hover:opacity-100 transition-opacity" onerror="this.src='https://placehold.co/200x60/transparent/FFFFFF?text=Hygeia+Hub'">
+                </div>
+                <p class="text-[9px] font-black uppercase tracking-[0.4em] text-on-surface/70 leading-loose">
+                    © 2026 Madrid — Barcelona <br>
+                    Hygeia Learning Hub.
+                </p>
+            </div>
+            
+            <div class="flex flex-col items-center text-center">
+                <p class="text-[8px] font-bold uppercase tracking-[0.2em] text-on-surface">
+                    Contacto Corporativo: <br>
+                    <a href="mailto:dfernandez@hygeia.network" class="text-accent hover:text-primary mt-1 block underline lowercase transition-colors">dfernandez@hygeia.network</a>
+                </p>
+            </div>
+
+            <div class="flex gap-10 text-[10px] font-black uppercase tracking-stately text-on-surface/80">
+                <a href="#" onclick="openModal('modal-aviso'); return false;" class="hover:text-accent transition-colors cursor-pointer">Aviso Legal</a>
+                <a href="#" onclick="openModal('modal-privacidad'); return false;" class="hover:text-accent transition-colors cursor-pointer">Privacidad</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modales -->
+    <div id="modal-aviso" class="modal fixed inset-0 z-[100] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="absolute inset-0 bg-surface-lowest/90 backdrop-blur-sm cursor-pointer" onclick="closeModal('modal-aviso')"></div>
+        <div class="bg-surface relative z-10 w-full max-w-3xl max-h-[85vh] rounded-2xl shadow-[0_0_40px_rgba(0,0,0,0.5)] flex flex-col mx-4 overflow-hidden border border-primary/30">
+            <div class="flex justify-between items-center p-6 border-b border-primary/20 bg-surface-low">
+                <h2 class="text-xl font-bold text-primary font-headline">Aviso Legal</h2>
+                <button onclick="closeModal('modal-aviso')" class="text-outline hover:text-accent transition-colors">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div class="p-8 overflow-y-auto font-body text-sm text-on-surface space-y-6 bg-surface">
+                <div class="prose prose-sm max-w-none prose-headings:text-primary prose-p:text-on-surface prose-a:text-accent">
+                    <p class="font-bold text-primary">Información General</p>
+                    <p>En cumplimiento de lo dispuesto en la Ley 34/2002, de 11 de julio, de servicios de la sociedad de la información y de comercio electrónico (LSSI-CE), se informa de que el presente sitio web tiene carácter corporativo, institucional y estrictamente informativo para profesionales sanitarios especializados en reumatología y medicina interna.</p>
+                    
+                    <p class="font-bold text-primary mt-6">Titular del Sitio</p>
+                    <p>HYGEIA LEARNING HUB, SL<br>NIF/CIF: B26580704<br>Domicilio social: C\ Capitan Arenas 22 1-3 08034 Barcelona<br>Correo electrónico de contacto: info@hygeia.network</p>
+
+                    <p>El acceso, la navegación y el uso del sitio web atribuyen la condición de usuario e implican la aceptación plena del presente Aviso legal.</p>
+
+                    <p class="font-bold text-primary mt-6">Uso de los contenidos e Independencia Editorial</p>
+                    <p>Este programa se financia de forma independiente mediante un Unrestricted Educational Grant. La entidad patrocinadora no tiene injerencia sobre el contenido científico ni en la selección de los ponentes. HLH no se hace responsable de posibles decisiones clínicas tomadas a raíz del contenido de la web; todo contenido es exclusivamente educativo.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-privacidad" class="modal fixed inset-0 z-[100] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="absolute inset-0 bg-surface-lowest/90 backdrop-blur-sm cursor-pointer" onclick="closeModal('modal-privacidad')"></div>
+        <div class="bg-surface relative z-10 w-full max-w-3xl max-h-[85vh] rounded-2xl shadow-[0_0_40px_rgba(0,0,0,0.5)] flex flex-col mx-4 overflow-hidden border border-primary/30">
+            <div class="flex justify-between items-center p-6 border-b border-primary/20 bg-surface-low">
+                <h2 class="text-xl font-bold text-primary font-headline">Política de Privacidad Institucional</h2>
+                <button onclick="closeModal('modal-privacidad')" class="text-outline hover:text-accent transition-colors">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div class="p-8 overflow-y-auto font-body text-sm text-on-surface space-y-6 bg-surface">
+                <div class="prose prose-sm max-w-none prose-headings:text-primary prose-p:text-on-surface prose-a:text-accent">
+                    <p class="font-bold text-primary">Información General</p>
+                    <p>HLH vela por la protección de la privacidad y por el tratamiento responsable de los datos personales, de conformidad con el Reglamento (UE) 2016/679 (RGPD) y normativa vigente.</p>
+
+                    <p class="font-bold text-primary mt-6">Tratamiento y Conservación</p>
+                    <p>Los datos recogidos (ej. vía email) son los estrictamente necesarios para atender consultas sobre nuestros programas CME. No se utilizarán con fines comerciales de terceros y se conservarán el tiempo estrictamente necesario.</p>
+
+                    <p class="font-bold text-primary mt-6">Derechos del Usuario</p>
+                    <p>Puede ejercer sus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad mediante escrito a info@hygeia.network.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Manejo de Modales
+        function openModal(id) {
+            const modal = document.getElementById(id);
+            if(modal) {
+                modal.classList.remove('opacity-0', 'pointer-events-none');
+                document.body.style.overflow = 'hidden'; 
+            }
+        }
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            if(modal) {
+                modal.classList.add('opacity-0', 'pointer-events-none');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Smooth Reveal Observer
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+        // Acordeones
+        function toggleAccordion(button) {
+            const item = button.parentElement;
+            const content = item.querySelector('.accordion-content');
+            const isActive = item.classList.contains('active');
+
+            document.querySelectorAll('.accordion-item').forEach(otherItem => {
+                otherItem.classList.remove('active');
+                otherItem.querySelector('.accordion-content').style.maxHeight = null;
+            });
+
+            if (!isActive) {
+                item.classList.add('active');
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        }
+    </script>
+
+    <!-- Asistente IA Institucional Integrado -->
+    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+    <style>
+      /* Personalización del Chat Widget a la identidad Púrpura/Turquesa de Hygeia */
+      :root {
+        /* Base de colores del Widget de n8n */
+        --chat--color--primary: #2C0C4D; /* Púrpura Oscuro */
+        --chat--color--primary-shade-50: #3D1766; 
+        --chat--color--primary--shade-100: #1D0733; 
+        --chat--color--secondary: #00E5FF; /* Turquesa */
+        --chat--color-secondary-shade-50: #00B2CC; 
+        
+        /* Modificando los contrastes de los mensajes */
+        --chat--color-white: #FFFFFF; 
+        --chat--color-light: #F7F4FA; /* Fondo claro zona escritura */
+        --chat--color-dark: #2C0C4D; /* Texto oscuro para el bot */
+        
+        /* Botón de apertura del chat */
+        --chat--toggle--background: #00E5FF; 
+        --chat--toggle--color: #2C0C4D; 
+      }
+      
+      .chat-window {
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4) !important;
+        font-family: 'Inter', sans-serif;
+      }
+    </style>
+
+    <script type="module">
+      import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+      createChat({
+        webhookUrl: 'https://n8n.asklepiosdat.com/webhook/13fc200e-509e-42fc-9d3c-4332f23e48d0/chat',
+        initialMessages: [
+            '¡Hola! Soy el Asesor Académico Institucional de Hygeia Learning Hub.',
+            '¿En qué puedo ayudarte sobre nuestro nuevo programa sobre Lupus Eritematoso Sistémico (LES) y la vía subcutánea?'
+        ],
+        i18n: {
+            en: {
+                title: 'Hygeia Learning Hub', 
+                subtitle: 'Asesoría Académica - Reumatología',
+                getStarted: 'Nueva conversación', 
+                chatInput: { 
+                    placeholder: 'Consulta sobre el programa de LES...' 
+                }
+            }
+        }
+      });
+    </script>
+</body>
+</html>
